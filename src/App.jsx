@@ -1,5 +1,27 @@
 import "./App.css";
 
+function WelcomeMessage(name) {
+  return <h1>Hello, {name}!</h1>;
+}
+
+function Greeting(isMorninig) {
+  if (isMorninig) {
+    return <h1>Good Morning!</h1>;
+  }
+  return <h1>Good Evening!</h1>;
+}
+
+function showAlert(condition, message) {
+  if (condition) {
+    return AlertBox(message);
+  }
+  return null;
+}
+
+function AlertBox(message) {
+  return <div className="alert">{message}</div>;
+}
+
 function App() {
   /* const name = "Alice";
   const buttonLable = "Click Me";
@@ -24,20 +46,39 @@ function App() {
       <img src={imageUrl}></img>
     </div>
   ); */
-  const isLoggedIn = false;
+  // const isLoggedIn = false;
   /*if (isLoggedIn) {
     return <h1>Welcome back!</h1>;
   } else {
     return <h1>Please log in.</h1>;
   } */
-  const element = <h1>{isLoggedIn ? "Welcome back!" : "Please login."}</h1>;
+  /* const element = <h1>{isLoggedIn ? "Welcome back!" : "Please login."}</h1>;
   const messages = ["1", "Message"];
   return (
     <div>
       {element}
-      {messages.length > 0 && <h2>You have {messages.length} unread messages.</h2>}
+      {messages.length > 0 && (
+        <h2>You have {messages.length} unread messages.</h2>
+      )}
+    </div>
+  ); */
+
+  const now = new Date();
+  const isMorninig = now.getHours() < 12;
+  return (
+    <div>
+      {/* This is a single line comment */}
+      This is a multi-line comment
+      {/*
+        This is a multi-line comment
+        that spans multiple lines.
+      */}
+      {WelcomeMessage("Alice")}
+      {WelcomeMessage("Bob")}
+      {WelcomeMessage("John")}
+      {Greeting(isMorninig)}
+      {showAlert(true, "This is important!")}
     </div>
   );
 }
-
 export default App;
