@@ -25,11 +25,19 @@ function App() {
     </div>
   ); */
   const isLoggedIn = false;
-  if (isLoggedIn) {
+  /*if (isLoggedIn) {
     return <h1>Welcome back!</h1>;
   } else {
     return <h1>Please log in.</h1>;
-  }
+  } */
+  const element = <h1>{isLoggedIn ? "Welcome back!" : "Please login."}</h1>;
+  const messages = ["1", "Message"];
+  return (
+    <div>
+      {element}
+      {messages.length > 0 && <h2>You have {messages.length} unread messages.</h2>}
+    </div>
+  );
 }
 
 export default App;
