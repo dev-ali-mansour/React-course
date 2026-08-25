@@ -1,7 +1,7 @@
 import "./App.css";
 
 function App() {
-  const name = "Alice";
+  /* const name = "Alice";
   const buttonLable = "Click Me";
   const imageUrl = "https://placehold.co/100x100";
 
@@ -23,7 +23,13 @@ function App() {
       <br />
       <img src={imageUrl}></img>
     </div>
-  );
+  ); */
+  const isLoggedIn = false;
+  if (isLoggedIn) {
+    return <h1>Welcome back!</h1>;
+  } else {
+    return <h1>Please log in.</h1>;
+  }
 }
 
 export default App;
