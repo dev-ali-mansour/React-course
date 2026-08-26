@@ -1,5 +1,6 @@
 import "./App.css";
-import ProfileCard from "./ProfileCard";
+// import ProfileCard from "./ProfileCard";
+import { useState } from "react";
 
 /* function WelcomeMessage(name) {
   return <h1>Hello, {name}!</h1>;
@@ -81,7 +82,7 @@ function App() {
 
   // API Call -> Fetching user name from the server
 
-  const handleHobbyClick = (hobby) => {
+  /*   const handleHobbyClick = (hobby) => {
     alert(`You clicked on ${hobby}`);
   };
 
@@ -106,6 +107,17 @@ function App() {
       <h1>Hello</h1>
       <ProfileCard {...aliceProfile} />
       <ProfileCard {...johnProfile} />
+    </div>
+  );
+  */
+
+  const [count, setCount] = useState(0);
+
+  return (
+    <div className="app-container">
+      <h1>Counter Value:{count}</h1>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <button onClick={() => setCount(count - 1)}>Decrement</button>
     </div>
   );
 }
