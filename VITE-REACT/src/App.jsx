@@ -66,7 +66,7 @@ function App() {
   ); 
 
   const now = new Date();
-  const isMorninig = now.getHours() < 12;
+  const isMorninig = now.getHours() <div 12;
   return (
     <div>
       // This is a single line comment
@@ -109,7 +109,6 @@ function App() {
       <ProfileCard {...johnProfile} />
     </div>
   );
-  */
 
   const [count, setCount] = useState(0);
   const [step, setStep] = useState(1);
@@ -139,6 +138,133 @@ function App() {
       <button onClick={incrementCount}>Increment</button>
       <button onClick={decrementCount}>Decrement</button>
       <button onClick={incrementTwice}>+2</button>
+    </div>
+  );
+
+  const [counters, setCounters] = useState([{ id: 1, value: 0 }]);
+
+  const addCounter = () => {
+    setCounters([...counters, { id: counters.length + 1, value: 0 }]);
+  };
+
+  const incrementCounter = (id) => {
+    setCounters(
+      counters.map((counter) => {
+        return counter.id === id ? { ...counter, value: counter.value + 1 } : counter;
+      }),
+    );
+  };
+
+  return (
+    <div className="app-container">
+      <button onClick={addCounter}>Add Counter</button>
+      <ul>
+        {counters.map((counter) => {
+          return (
+            <li key={counter.id}>
+              Counter {counter.id}: {counter.value}
+              <button onClick={() => incrementCounter(counter.id)}>
+                Increment
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );*/
+
+  const [formData, setFormData] = useState({
+    text: "",
+    checkbox: false,
+    radio: "",
+    select: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
+  };
+
+  return (
+    <div className="app-container">
+      <h1>Form Example</h1>
+      <form>
+        {/* Text Input */}
+        <div className="form-field">
+          <label>Text:</label>
+          <input
+            type="text"
+            name="text"
+            value={formData.text}
+            onChange={handleChange}
+          />
+        </div>
+        {/* Checkbox */}
+        <div className="form-field">
+          <label>
+            <input
+              type="checkbox"
+              name="checkbox"
+              checked={formData.checkbox}
+              onChange={handleChange}
+            />
+            Checkbox
+          </label>
+        </div>
+        {/* Radio Buttons */}
+        <div className="form-field">
+          <label>Radio:</label>
+
+          <label>
+            <input
+              type="radio"
+              name="radio"
+              value="option1"
+              checked={formData.radio === "option1"}
+              onChange={handleChange}
+            />
+            Option 1
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="radio"
+              value="option2"
+              checked={formData.radio === "option2"}
+              onChange={handleChange}
+            />
+            Option 2
+          </label>
+        </div>
+
+        {/* Dropdown */}
+        <div className="form-field">
+          <label>Select:</label>
+          <select name="select" value={formData.select} onChange={handleChange}>
+            <option value="">-- Choose an option --</option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+          </select>
+        </div>
+
+        <div className="form-data">
+          <h3>Form Data:</h3>
+          <p>
+            <strong>Text:</strong> {formData.text || "N/A"}
+          </p>
+          <p>
+            <strong>Checkbox:</strong>{" "}
+            {formData.checkbox ? "Checked" : "Not checked"}
+          </p>
+          <p>
+            <strong>Radio:</strong> {formData.radio || "N/A"}
+          </p>
+          <p>
+            <strong>Select:</strong> {formData.select || "N/A"}
+          </p>
+        </div>
+      </form>
     </div>
   );
 }
