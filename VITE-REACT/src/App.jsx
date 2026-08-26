@@ -24,7 +24,7 @@ function AlertBox(message) {
 } */
 
 function App() {
-   /* const name = "Alice";
+  /* const name = "Alice";
   const buttonLable = "Click Me";
   const imageUrl = "https://placehold.co/100x100";
 
@@ -83,8 +83,8 @@ function App() {
   return (
     <div>
       <h1>Hello</h1>
-      <ProfileCard name="Alice" />
-      <ProfileCard name="John" />
+      <ProfileCard name="Alice" age="23" num="2" />
+      <ProfileCard name="John" age="42" num={2} />
     </div>
   );
 }
