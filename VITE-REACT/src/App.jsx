@@ -81,10 +81,10 @@ function App() {
 
   // API Call -> Fetching user name from the server
   return (
-    <div>
+    <div className="app-container">
       <h1>Hello</h1>
-      <ProfileCard name="Alice" age={23} isMember={true} />
-      <ProfileCard name="John" age={42} isMember={false} />
+      <ProfileCard name="Alice" age={23} isMember={true} hobbies={["Reading", "Cooking"]} />
+      <ProfileCard name="John" age={42} isMember={false} hobbies={["Swimming", "Hiking"]} />
     </div>
   );
 }
