@@ -5,7 +5,7 @@ function ProfileCard(props) {
     <div>
       <h3>Name: {props.name}</h3>
       <h3>Age: {props.age}</h3>
-      <h3>Number: {sume}</h3>
+      <h3>Status: {props.isMember ? "ActiveMember" : "Guest"}</h3>
     </div>
   );
 }
