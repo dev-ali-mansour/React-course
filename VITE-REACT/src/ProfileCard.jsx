@@ -1,11 +1,9 @@
-function ProfileCard(props) {
-  //   props.name = "John"; // This line will cause an error because props are read-only
-  const sume = props.num + 1;
+function ProfileCard({ name, age, isMember }) {
   return (
     <div>
-      <h3>Name: {props.name}</h3>
-      <h3>Age: {props.age}</h3>
-      <h3>Status: {props.isMember ? "ActiveMember" : "Guest"}</h3>
+      <h3>Name: {name}</h3>
+      <h3>Age: {age}</h3>
+      <h3>Status: {isMember ? "ActiveMember" : "Guest"}</h3>
     </div>
   );
 }
