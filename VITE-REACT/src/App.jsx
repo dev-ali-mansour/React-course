@@ -1,6 +1,6 @@
 import "./App.css";
 // import ProfileCard from "./ProfileCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 /* function WelcomeMessage(name) {
   return <h1>Hello, {name}!</h1>;
@@ -266,7 +266,7 @@ function App() {
         </div>
       </form>
     </div>
-  );*/
+  );
 
   const [backgroundColor, setBackgroundColor] = useState("#ffffff");
   const colors = [
@@ -313,6 +313,23 @@ function App() {
           onChange={(e) => handleColorChange(e.target.value)}
         />
       </div>
+    </div>
+  );*/
+
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = `Count: ${count}`;
+  }, [count]);
+
+  const incrementCount = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div className="app-container">
+      <h1>useEffect Hook</h1>
+      <button onClick={incrementCount}>Increment</button>
     </div>
   );
 }
