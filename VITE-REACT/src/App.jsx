@@ -171,7 +171,7 @@ function App() {
         })}
       </ul>
     </div>
-  );*/
+  );
 
   const [formData, setFormData] = useState({
     text: "",
@@ -189,7 +189,7 @@ function App() {
     <div className="app-container">
       <h1>Form Example</h1>
       <form>
-        {/* Text Input */}
+        //  Text Input 
         <div className="form-field">
           <label>Text:</label>
           <input
@@ -199,7 +199,7 @@ function App() {
             onChange={handleChange}
           />
         </div>
-        {/* Checkbox */}
+        //  Checkbox
         <div className="form-field">
           <label>
             <input
@@ -211,7 +211,7 @@ function App() {
             Checkbox
           </label>
         </div>
-        {/* Radio Buttons */}
+        //  Radio Buttons
         <div className="form-field">
           <label>Radio:</label>
 
@@ -238,7 +238,7 @@ function App() {
           </label>
         </div>
 
-        {/* Dropdown */}
+        //  Dropdown
         <div className="form-field">
           <label>Select:</label>
           <select name="select" value={formData.select} onChange={handleChange}>
@@ -265,6 +265,54 @@ function App() {
           </p>
         </div>
       </form>
+    </div>
+  );*/
+
+  const [backgroundColor, setBackgroundColor] = useState("#ffffff");
+  const colors = [
+    "#ff0000",
+    "#00ff00",
+    "#0000ff",
+    "#ffff00",
+    "#ff00ff",
+    "#00ffff",
+    "#ffffff",
+    "#000000",
+    "#ffa500",
+    "#800080",
+    "#008000",
+    "#808080",
+    "#ffc0cb",
+    "#f0e68c",
+    "#add8e6",
+    "#a52a2a",
+  ];
+
+  const handleColorChange = (color) => {
+    setBackgroundColor(color);
+  };
+
+  return (
+    <div className="App" style={{ backgroundColor: backgroundColor }}>
+      <h1>Color Picker</h1>
+      <div className="color-palette">
+        {colors.map((color, index) => (
+          <div
+            key={index}
+            className="color-box"
+            style={{ backgroundColor: color }}
+            onClick={() => handleColorChange(color)}
+          ></div>
+        ))}
+      </div>
+
+      <div className="custom-color-picker">
+        <input
+          type="color"
+          value={backgroundColor}
+          onChange={(e) => handleColorChange(e.target.value)}
+        />
+      </div>
     </div>
   );
 }
