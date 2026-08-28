@@ -23,7 +23,7 @@ function AlertBox(message) {
   return <div className="alert">{message}</div>;
 } */
 
-  const ThemeContext = createContext("light");
+const ThemeContext = createContext("light");
 
 function App() {
   /* const name = "Alice";
@@ -408,12 +408,15 @@ function App() {
     </div>
   );*/
 
-
   return (
-    <div style={{ border: "2px solid black", padding: "20px", margin: "20px" }}>
-      <h2>App (Parent)</h2>
-      <ComponentA />
-    </div>
+    <ThemeContext.Provider value="dark">
+      <div
+        style={{ border: "2px solid black", padding: "20px", margin: "20px" }}
+      >
+        <h2>App (Parent)</h2>
+        <ComponentA />
+      </div>
+    </ThemeContext.Provider>
   );
 }
 
