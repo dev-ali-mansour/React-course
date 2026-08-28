@@ -1,5 +1,6 @@
-import { createContext, useContext, useState } from "react";
+import { createContext } from "react";
 import "./App.css";
+import useCounter from "./useCounter";
 
 /* function WelcomeMessage(name) {
   return <h1>Hello, {name}!</h1>;
@@ -406,7 +407,7 @@ function App() {
       <button onClick={focusInputNext}>Focus and Highlight</button>
       <button onClick={resetFocus}>Reset</button>
     </div>
-  );*/
+  );
 
   const [theme, setTheme] = useState("light");
 
@@ -471,6 +472,16 @@ function GlobalComponent() {
     >
       <h2>Global Component (Outside Provider)</h2>
       <div>The current theme is: {theme}</div>
+    </div>
+  );*/
+
+  const { count, increment, decrement } = useCounter();
+
+  return (
+    <div>
+      <h2>Count:{count}</h2>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
     </div>
   );
 }
