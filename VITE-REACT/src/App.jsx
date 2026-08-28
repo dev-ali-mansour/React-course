@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { createContext, useContext } from "react";
 import "./App.css";
-import DigitalClock from "./DigitalClock";
 
 /* function WelcomeMessage(name) {
   return <h1>Hello, {name}!</h1>;
@@ -23,6 +22,8 @@ function showAlert(condition, message) {
 function AlertBox(message) {
   return <div className="alert">{message}</div>;
 } */
+
+  const ThemeContext = createContext("light");
 
 function App() {
   /* const name = "Alice";
@@ -407,35 +408,35 @@ function App() {
     </div>
   );*/
 
-  const theme = "dark";
 
   return (
     <div style={{ border: "2px solid black", padding: "20px", margin: "20px" }}>
       <h2>App (Parent)</h2>
-      <ComponentA theme={theme} />
+      <ComponentA />
     </div>
   );
 }
 
-function ComponentA({ theme }) {
+function ComponentA() {
   return (
     <div style={{ border: "2px solid blue", padding: "20px", margin: "20px" }}>
       <h2>Component A (Child)</h2>
-      <ComponentB theme={theme} />
+      <ComponentB />
     </div>
   );
 }
 
-function ComponentB({ theme }) {
+function ComponentB() {
   return (
     <div style={{ border: "2px solid green", padding: "20px", margin: "20px" }}>
       <h2>Component B (Child)</h2>
-      <ThemedComponent theme={theme} />
+      <ThemedComponent />
     </div>
   );
 }
 
-function ThemedComponent({ theme }) {
+function ThemedComponent() {
+  const theme = useContext(ThemeContext);
   return (
     <div style={{ border: "2px solid red", padding: "20px", margin: "20px" }}>
       <h2>Themed Component (Great-GrandChild)</h2>
