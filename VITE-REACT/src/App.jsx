@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import axios from "axios";
+import api from "./api/api";
 
 /* function WelcomeMessage(name) {
   return <h1>Hello, {name}!</h1>;
@@ -35,24 +35,6 @@ axios.interceptors.response.use((response) => {
   console.log("Response:", response);
   return response;
 }); */
-
-const api = axios.create({
-  baseURL: "https://jsonplaceholder.typicode.com",
-  headers: {
-    Authorization: "Bearer <Token>",
-    "Content-Type": "application/json",
-  },
-});
-
-api.interceptors.request.use((request) => {
-  console.log("Starting Request", request);
-  return request;
-});
-
-api.interceptors.response.use((response) => {
-  console.log("Response:", response);
-  return response;
-});
 
 function App() {
   /* const name = "Alice";
