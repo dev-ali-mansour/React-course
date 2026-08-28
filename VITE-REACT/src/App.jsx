@@ -670,6 +670,12 @@ function GlobalComponent() {
     return true;
   }; */
 
+  const existingUsernames = ["admin", "user123", "john"];
+  const checkIfUserNameExist = async (username) => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    return existingUsernames.includes(username);
+  };
+
   return (
     <div>
       <h1>Forms in React</h1>
@@ -689,6 +695,10 @@ function GlobalComponent() {
                   value !== "admin" || "Admin is not allowed",
                 isNotNumber: (value) =>
                   isNaN(value) || "Name cannot be a number",
+                checkUserName: async (value) => {
+                  const exist = await checkIfUserNameExist(value);
+                  return !exist || "Username already exists";
+                },
               },
               // validate: validateName,
             })}
@@ -713,7 +723,7 @@ function GlobalComponent() {
             <span className="error-message">{errors.email.message}</span>
           )}
         </label>
-        
+
         <button type="submit">Submit</button>
         <button type="button" onClick={() => reset()}>
           Reset
