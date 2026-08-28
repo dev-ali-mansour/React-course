@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import useCounter from "./useCounter";
 
@@ -475,13 +475,14 @@ function GlobalComponent() {
     </div>
   );*/
 
-  const { count, increment, decrement } = useCounter();
+  const { count, increment, decrement, reset } = useCounter(10);
 
   return (
     <div>
       <h2>Count:{count}</h2>
       <button onClick={increment}>Increment</button>
       <button onClick={decrement}>Decrement</button>
+      <button onClick={reset}>Reset</button>
     </div>
   );
 }
