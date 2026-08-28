@@ -372,7 +372,7 @@ function App() {
       <p>Ref Count: {refCount.current}</p>
       <button onClick={incrementRefCount}>Increment Ref Count</button>
     </div>
-  );*/
+  );
 
   const inputRef = useRef(null);
   const inputRefNext = useRef(null);
@@ -405,6 +405,43 @@ function App() {
       <button onClick={focusInputNext}>Focus and Highlight</button>
       <button onClick={resetFocus}>Reset</button>
     </div>
+  );*/
+
+  const theme = "dark";
+
+  return (
+    <div style={{ border: "2px solid black", padding: "20px", margin: "20px" }}>
+      <h2>App (Parent)</h2>
+      <ComponentA theme={theme} />
+    </div>
   );
 }
+
+function ComponentA({ theme }) {
+  return (
+    <div style={{ border: "2px solid blue", padding: "20px", margin: "20px" }}>
+      <h2>Component A (Child)</h2>
+      <ComponentB theme={theme} />
+    </div>
+  );
+}
+
+function ComponentB({ theme }) {
+  return (
+    <div style={{ border: "2px solid green", padding: "20px", margin: "20px" }}>
+      <h2>Component B (Child)</h2>
+      <ThemedComponent theme={theme} />
+    </div>
+  );
+}
+
+function ThemedComponent({ theme }) {
+  return (
+    <div style={{ border: "2px solid red", padding: "20px", margin: "20px" }}>
+      <h2>Themed Component (Great-GrandChild)</h2>
+      <div>The current theme is: {theme}</div>
+    </div>
+  );
+}
+
 export default App;
