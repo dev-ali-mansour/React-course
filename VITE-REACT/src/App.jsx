@@ -693,8 +693,11 @@ function GlobalComponent() {
               // validate: validateName,
             })}
           />
+          {errors.name && (
+            <span className="error-message">{errors.name.message}</span>
+          )}
         </label>
-        {errors.name && <p>{errors.name.message}</p>}
+
         <label>
           Email:
           <input
@@ -706,8 +709,11 @@ function GlobalComponent() {
               },
             })}
           />
+          {errors.email && (
+            <span className="error-message">{errors.email.message}</span>
+          )}
         </label>
-        {errors.email && <p>{errors.email.message}</p>}
+        
         <button type="submit">Submit</button>
         <button type="button" onClick={() => reset()}>
           Reset
