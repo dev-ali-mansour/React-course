@@ -643,6 +643,7 @@ function GlobalComponent() {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -657,7 +658,10 @@ function GlobalComponent() {
     console.log("Email", watchedEmail);
   }, [watchedEmail]);
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    reset();
+  };
 
   return (
     <div>
@@ -691,6 +695,9 @@ function GlobalComponent() {
         </label>
         {errors.email && <p>{errors.email.message}</p>}
         <button type="submit">Submit</button>
+        <button type="button" onClick={() => reset()}>
+          Reset
+        </button>
       </form>
     </div>
   );
