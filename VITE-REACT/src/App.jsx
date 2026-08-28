@@ -665,12 +665,31 @@ function GlobalComponent() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>
           Name:
-          <input {...register("name")} />
+          {/* <input {...register("name", { required: true, minLength: 2, })} /> */}
+          <input
+            {...register("name", {
+              required: "Name is required",
+              minLength: {
+                value: 2,
+                message: "Name should be at least 2 characters",
+              },
+            })}
+          />
         </label>
+        {errors.name && <p>{errors.name.message}</p>}
         <label>
           Email:
-          <input {...register("email")} />
+          <input
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                message: "Please enter a valid email address",
+              },
+            })}
+          />
         </label>
+        {errors.email && <p>{errors.email.message}</p>}
         <button type="submit">Submit</button>
       </form>
     </div>
