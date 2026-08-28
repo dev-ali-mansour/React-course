@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import "./App.css";
-import useCounter from "./useCounter";
+import axios from "axios";
 
 /* function WelcomeMessage(name) {
   return <h1>Hello, {name}!</h1>;
@@ -492,12 +492,13 @@ function GlobalComponent() {
 
   useEffect(() => {
     setLoading(true);
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => response.json())
-      .then((json) => {
-        setData(json);
+    axios
+      .get("https://jsonplaceholder.typicode.com/posts")
+      .then((response) => {
+        console.log(response);
+        setData(response.data);
         setLoading(false);
-        throw new Error("Something went wrong!");
+        // throw new Error("Something went wrong!");
       })
       .catch((error) => {
         console.error("Error Fetching data:", error);
