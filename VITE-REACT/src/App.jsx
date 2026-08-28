@@ -645,7 +645,9 @@ function GlobalComponent() {
     watch,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    mode: "onChange",
+  });
 
   const watchedName = watch("name");
   const watchedEmail = watch("email");
