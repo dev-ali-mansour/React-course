@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@layer theme {
+  :root {
+    --color-custom-blue: #1f509a;
+  }
+}
