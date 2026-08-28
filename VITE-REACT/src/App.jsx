@@ -415,15 +415,23 @@ function App() {
   };
 
   return (
-    <ThemeContext.Provider value={theme}>
-      <div
-        style={{ border: "2px solid black", padding: "20px", margin: "20px" }}
-      >
-        <h2>App (Parent)</h2>
-        <button onClick={toggleTheme}>Toggle Theme</button>
-        <ComponentA />
-      </div>
-    </ThemeContext.Provider>
+    <div className="app-root">
+      <GlobalComponent />
+
+      <ThemeContext.Provider value={theme}>
+        <div
+          style={{ border: "2px solid black", padding: "20px", margin: "20px" }}
+        >
+          <h2>App (Parent)</h2>
+          <button onClick={toggleTheme}>Toggle Theme</button>
+          <ComponentA />
+        </div>
+      </ThemeContext.Provider>
+
+      <ThemeContext.Provider value="dark">
+        <GlobalComponent />
+      </ThemeContext.Provider>
+    </div>
   );
 }
 
@@ -450,6 +458,18 @@ function ThemedComponent() {
   return (
     <div style={{ border: "2px solid red", padding: "20px", margin: "20px" }}>
       <h2>Themed Component (Great-GrandChild)</h2>
+      <div>The current theme is: {theme}</div>
+    </div>
+  );
+}
+
+function GlobalComponent() {
+  const theme = useContext(ThemeContext);
+  return (
+    <div
+      style={{ border: "2px solid purple", padding: "20px", margin: "20px" }}
+    >
+      <h2>Global Component (Outside Provider)</h2>
       <div>The current theme is: {theme}</div>
     </div>
   );

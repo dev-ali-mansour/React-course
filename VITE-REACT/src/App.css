@@ -178,6 +178,11 @@ div {
   padding-top: 0;
 }
 
+.app-root,
+.app-root div {
+  min-height: 0;
+}
+
 .clock-container {
   display: flex;
   justify-content: center;
