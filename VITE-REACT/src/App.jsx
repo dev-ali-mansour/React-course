@@ -473,7 +473,7 @@ function GlobalComponent() {
       <h2>Global Component (Outside Provider)</h2>
       <div>The current theme is: {theme}</div>
     </div>
-  );*/
+  );
 
   const { count, increment, decrement, reset } = useCounter(10);
 
@@ -483,6 +483,32 @@ function GlobalComponent() {
       <button onClick={increment}>Increment</button>
       <button onClick={decrement}>Decrement</button>
       <button onClick={reset}>Reset</button>
+    </div>
+  );*/
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((response) => response.json())
+      .then((json) => setData(json));
+  }, []);
+
+  return (
+    <div>
+      <h1>API's</h1>
+      <ul>
+        {data.map((post) => {
+          return (
+            <li key={post.id}>
+              <p>
+                <strong>{post.title}</strong>
+              </p>
+              <p>{post.body}</p>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
