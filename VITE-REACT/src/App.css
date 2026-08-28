@@ -206,3 +206,11 @@ div {
   font-size: 0.9rem;
   margin-top: 5px;
 }
+
+.form-container input {
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

@@ -677,7 +677,7 @@ function GlobalComponent() {
   };
 
   return (
-    <div>
+    <div className="form-container">
       <h1>Forms in React</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>
@@ -721,6 +721,42 @@ function GlobalComponent() {
           />
           {errors.email && (
             <span className="error-message">{errors.email.message}</span>
+          )}
+        </label>
+
+        <label>
+          Password:
+          <input
+            type="password"
+            {...register("password", {
+              required: "Password is required",
+              pattern: {
+                value:
+                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                message:
+                  "Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character",
+              },
+            })}
+          />
+          {errors.password && (
+            <span className="error-message">{errors.password.message}</span>
+          )}
+        </label>
+
+        <label>
+          Confirm Password:
+          <input
+            type="password"
+            {...register("confirmPassword", {
+              required: "Confirm Password is required",
+              validate: (value) =>
+                value === watch("password") || "Passwords do not match",
+            })}
+          />
+          {errors.confirmPassword && (
+            <span className="error-message">
+              {errors.confirmPassword.message}
+            </span>
           )}
         </label>
 
