@@ -547,7 +547,7 @@ function GlobalComponent() {
         })}
       </ul>
     </div>
-  );*/
+  );
 
   const [data, setData] = useState([]);
   const handleSubmit = (event) => {
@@ -569,6 +569,46 @@ function GlobalComponent() {
       <h1>API's in React</h1>
       <form onSubmit={handleSubmit}>
         <button type="submit">Add Post</button>
+      </form>
+    </div>
+  );*/
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+  });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form Data Submitted", formData);
+  };
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  return (
+    <div className="form-container">
+      <h1>Forms in React</h1>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Name:
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Email:
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </label>
+
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
