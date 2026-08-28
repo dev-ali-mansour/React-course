@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { use, useEffect } from "react";
 import "./App.css";
-import api from "./api/api";
+import { useForm } from "react-hook-form";
 
 /* function WelcomeMessage(name) {
   return <h1>Hello, {name}!</h1>;
@@ -571,7 +571,7 @@ function GlobalComponent() {
         <button type="submit">Add Post</button>
       </form>
     </div>
-  );*/
+  );
 
   const [formData, setFormData] = useState({
     name: "",
@@ -634,6 +634,43 @@ function GlobalComponent() {
           />
         </label>
 
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );*/
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const watchedName = watch("name");
+  const watchedEmail = watch("email");
+
+  useEffect(() => {
+    console.log("Name", watchedName);
+  }, [watchedName]);
+
+  useEffect(() => {
+    console.log("Email", watchedEmail);
+  }, [watchedEmail]);
+
+  const onSubmit = (data) => console.log(data);
+
+  return (
+    <div>
+      <h1>Forms in React</h1>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <label>
+          Name:
+          <input {...register("name")} />
+        </label>
+        <label>
+          Email:
+          <input {...register("email")} />
+        </label>
         <button type="submit">Submit</button>
       </form>
     </div>
