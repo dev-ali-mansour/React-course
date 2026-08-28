@@ -1,6 +1,5 @@
 import "./App.css";
-// import ProfileCard from "./ProfileCard";
-import ParentComponent from "./ParentComponent";
+import DigitalClock from "./DigitalClock";
 
 /* function WelcomeMessage(name) {
   return <h1>Hello, {name}!</h1>;
@@ -334,10 +333,16 @@ function App() {
       <button onClick={incrementCount}>Increment</button>
       <button onClick={() => setAnotherValue(anotherValue + 1)}>Another Value</button>
     </div>
-  );*/
+  );
   return (
     <div>
       <ParentComponent />
+    </div>
+  );*/
+
+  return (
+    <div >
+      <DigitalClock />
     </div>
   );
 }
