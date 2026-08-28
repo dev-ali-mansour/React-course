@@ -484,7 +484,7 @@ function GlobalComponent() {
       <button onClick={decrement}>Decrement</button>
       <button onClick={reset}>Reset</button>
     </div>
-  );*/
+  );
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -536,6 +536,31 @@ function GlobalComponent() {
           );
         })}
       </ul>
+    </div>
+  );*/
+
+  const [data, setData] = useState([]);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const newPost = {
+      title: "foo",
+      body: "bar",
+      userId: 1,
+    };
+    axios
+      .post("https://jsonplaceholder.typicode.com/posts", newPost)
+      .then((response) => {
+        console.log("New Post Added", response.data);
+        setData([response.data, ...data]);
+      });
+  };
+
+  return (
+    <div>
+      <h1>API's in React</h1>
+      <form onSubmit={handleSubmit}>
+        <button type="submit">Add Post</button>
+      </form>
     </div>
   );
 }
