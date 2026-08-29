@@ -1,9 +1,21 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useSearchParams } from "react-router-dom";
 
 function About() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const topic = searchParams.get("topic") || "general";
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const topicFromUrl = urlParams.get("topic") || "general";
+
+  console.log("useSearchParams: ", topic);
+  console.log("URLSearchParams: ", topicFromUrl);
+
+  const handleTopic = (newTopic) => {
+    setSearchParams({ topic: newTopic });
+  };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
-      <h2 className="text-3xl font-bold text-blue-600">About Page</h2>
+      <h2 className="text-3xl font-bold text-blue-600">About Us</h2>
       <p className="text-gray-700 mt-4 text-lg">
         This page provides information about us. Learn more about our mission,
         values, etc.
@@ -23,6 +35,34 @@ function About() {
           </li>
         </ul>
       </nav>
+
+      <div className="mt-6">
+        <h3 className="text-xl text-gray-800">Choose a topic:</h3>
+        <div className="flex space-x-4 mt-4">
+          <button
+            onClick={() => handleTopic("Team")}
+            className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+          >
+            Team
+          </button>
+          <button
+            onClick={() => handleTopic("Mission")}
+            className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+          >
+            Mission
+          </button>
+          <button
+            onClick={() => handleTopic("Vision")}
+            className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+          >
+            vision
+          </button>
+        </div>
+      </div>
+
+      <div className="mt-8 text-lg text-gray-7000">
+        <p>Current Topic: {topic}</p>
+      </div>
 
       <div className="mt-8 w-full max-w-4xl">
         <Outlet />
