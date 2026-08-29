@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./Home";
 import About from "./About";
 import Contact from "./Contact";
+import Team from "./Team";
 
 /*
   / -> Home
@@ -46,7 +47,9 @@ function App() {
         <div className="container mx-auto py-8">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/about" element={<About />}>
+              <Route path="team" element={<Team />} />
+            </Route>
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </div>
