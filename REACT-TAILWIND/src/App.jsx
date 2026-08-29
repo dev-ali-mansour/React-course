@@ -1,3 +1,4 @@
+import DarkModeToggle from "./DarkModeToggle";
 import "./App.css";
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
         </p>
       </div>
     </div>
-  ); */
+  ); 
   return (
     <div className="bg-gray-100 p-4">
       <ul className="list-none md:flex md:gap-4">
@@ -26,6 +27,14 @@ function App() {
           Item 3
         </li>
       </ul>
+    </div>
+  );*/
+
+  return (
+    <div className="p-4 bg-white min-h-screen dark:bg-gray-900 dark:text-white">
+      <DarkModeToggle />
+      <h1 className="text-3xl font-bold mt-4 mb-2">Welcome to Dark Mode App</h1>
+      <p>This is an example of implementing dark mode using Tailwind CSS.</p>
     </div>
   );
 }
